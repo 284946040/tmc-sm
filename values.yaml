@@ -1,0 +1,50 @@
+arborProject: "harbor.xx.cn/tmc"
+supportFlags:
+  - tmc-integration-environment
+dnsZone: tmc.westlab.com
+clusterIssuer: tmcsm-issuer
+postgres:
+  userPassword: Pa$$w0rd
+  maxConnections: 300
+minio:
+  username: minio 
+  password: minio123
+contourEnvoy:
+  serviceType: LoadBalancer
+  serviceAnnotations:
+    ako.vmware.com/load-balancer-ip: "10.105.148.128"
+oidc:
+  issuerType: pinniped
+  issuerURL: "https://dev-62505051.okta.com/oauth2/default"
+  clientID: "0oa98it1ndzDLAWRU5d7"
+  clientSecret: "Yh940N5EDzO-cb6sSrH9VvEWn7_bVhdbmxz8ow1s"
+trustedCAs:
+  local-ca.pem: | 
+    -----BEGIN CERTIFICATE-----
+    MIIC7TCCAdWgAwIBAgIRAOxZS3gpkJlfA5TNcfuc2D4wDQYJKoZIhvcNAQELBQAw
+    EDEOMAwGA1UEAxMFdG1jc20wHhcNMjMwNzAzMTQzODU5WhcNMjMxMDAxMTQzODU5
+    WjAQMQ4wDAYDVQQDEwV0bWNzbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoC
+    ggEBAMZ54OU4kPJiTeIuc5hwkwsPTykTXNDWB+qGfqVNkHAQJD/CO2VKDAFClFTD
+    ePiQ2H6VsI0z9jmP7I/sB3FSbaLsZXtzI9PgmTMl1NW45U5dnIsoO5H5a6ZqrC5G
+    lq+TfkUZr7wTQ69RLAnNEYJqgOB0IzUb4LBgl/tvRRNyH388SKxx0t39bcLbK6J6
+    tCOiklctY16wOIjlja2b+5tq8ei/leBKhUYwv4ZJuXk90OZ3dLYb13TKScMXt2CR
+    Fry2/xlaRYZuJOc97FFCqhCw5DZQxb/PKWpIi/F0b6tXdyqRA9a7llCT4P6d2xAP
+    WGDw/8zSNBNbBPFEZtmpUKIWB5UCAwEAAaNCMEAwDgYDVR0PAQH/BAQDAgKkMA8G
+    A1UdEwEB/wQFMAMBAf8wHQYDVR0OBBYEFMLcS8eEeSvPmlKQeQ9c90Dc89kDMA0G
+    CSqGSIb3DQEBCwUAA4IBAQA/ch0WPB/4sDadfAJh88dUNqaPnAPCYgzGzx/Xo2XY
+    bRFpb0n2ahsKGzlbyAl5GHmjhhCgSIBNC7htPfZ8vAphU7/OnXksZWdV0BU+GUws
+    RexYTx2xgJ2Y7O91hrJQpvqz/hPCn3i/CZAt8XIzCUqzrKZuxlcq7fJMZAmQDBBw
+    Uv2jaGdyfls4Dk/U7RXTHkZ1OsGw5Md4507jtQr8VgPbKch5SdNAjv8z7s9KXG2M
+    NYeazvKnxeYp1oqzZmPZxl0NQVVY/Vn/NUXhpTdvI4fBhjAbR8Ov4iD+DjzPWI1Z
+    AT7xMbvcJ5+HDHj7y0AogWaWBA1XLefeZcEvRcjX/yMu
+    -----END CERTIFICATE-----
+alertmanager: # needed only if you want to turn on alerting
+  criticalAlertReceiver:
+    slack_configs:
+    - send_resolved: false
+      api_url: https://hooks.slack.com/services/...
+      channel: '#<slack-channel-name>'
+telemetry:
+  ceipOptIn: true
+  eanNumber: <vmware-ean> # if EAN is available
+  ceipAgreement: true
