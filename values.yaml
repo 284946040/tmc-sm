@@ -1,4 +1,4 @@
-arborProject: "harbor.xx.cn/tmc"
+harborProject: "harbor.xx.cn/tmc"
 supportFlags:
   - tmc-integration-environment
 dnsZone: tmc.westlab.com
